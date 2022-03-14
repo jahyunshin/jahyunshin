@@ -1,7 +1,7 @@
 ## Resume
 
 ### 기본정보
-Photo      | Future
+Category   |-
 -----------|--------------
 Name       | 신자현
 (Chinese) | 辛慈鉉
