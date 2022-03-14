@@ -4,8 +4,8 @@
 Category   |-
 -----------|--------------
 Name       | 신자현
-(Chinese) | 辛慈鉉
-(English) | Jahyun Shin
+(Chinese)  | 辛慈鉉
+(English)  | Jahyun Shin
 Age        | 40
 Birth      | 1983.
 Email      | jahyunshin@gmail.com
@@ -51,7 +51,6 @@ Period            | Company    | Business
   > * Spring Framework, Spring boot, Sybase, jQuery 등
   - 개발기간: 34개월
   - 사업정보: [KOSMOS (2003~)](https://www.koscom.co.kr/portal/bbs/B0000037/view.do?nttId=732&menuNo=200433)
-
 
 ## Reference
 Site   | URL
