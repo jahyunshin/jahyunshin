@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <style>
+        html{height:100%}body{padding:30px}code{margin:0 2px;padding:0 5px}pre>code{word-break:break-all;word-wrap:break-word;margin:0}/**
+ * standard markdown style
+ */
+        .markdown {
+            padding: 20px;
+            font-size: 0.9em;
+        }
+        .markdown a {
+            text-decoration: none;
+            vertical-align: baseline;
+        }
+        .markdown a:hover {
+            text-decoration: underline;
+        }
+        .markdown h1 {
+            font-size: 2.2em;
+            font-weight: bold;
+            margin: 1.5em 0 1em 0;
+        }
+        .markdown h2 {
+            font-size: 1.8em;
+            font-weight: bold;
+            margin: 1.275em 0 0.85em 0;
+        }
+        .markdown h3 {
+            font-size: 1.6em;
+            font-weight: bold;
+            margin: 1.125em 0 0.75em 0;
+        }
+        .markdown h4 {
+            font-size: 1.4em;
+            font-weight: bold;
+            margin: 0.99em 0 0.66em 0;
+        }
+        .markdown h5 {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin: 0.855em 0 0.57em 0;
+        }
+        .markdown h6 {
+            font-size: 1em;
+            font-weight: bold;
+            margin: 0.75em 0 0.5em 0;
+        }
+        .markdown h1:first-child,
+        .markdown h2:first-child,
+        .markdown h3:first-child,
+        .markdown h4:first-child,
+        .markdown h5:first-child,
+        .markdown h6:first-child {
+            margin-top: 0;
+        }
+        .markdown h1 + p,
+        .markdown h2 + p,
+        .markdown h3 + p,
+        .markdown h4 + p,
+        .markdown h5 + p,
+        .markdown h6 + p {
+            margin-top: 0;
+        }
+        .markdown hr {
+            border: 1px solid #cccccc;
+        }
+        .markdown p {
+            margin: 1em 0;
+            line-height: 1.6em;
+        }
+        .markdown ol {
+            list-style-type: decimal;
+        }
+        .markdown li {
+            display: list-item;
+            line-height: 1.4em;
+        }
+        .markdown blockquote {
+            margin: 1em 20px;
+        }
+        .markdown blockquote > :first-child {
+            margin-top: 0;
+        }
+        .markdown blockquote > :last-child {
+            margin-bottom: 0;
+        }
+        .markdown blockquote cite:before {
+            content: '\2014 \00A0';
+        }
+        .markdown .code {
+            border: 1px solid #cccccc;
+            border-radius: 3px;
+            word-break: break-all;
+            word-wrap: break-word;
+        }
+        .markdown pre {
+            border: 1px solid #cccccc;
+            border-radius: 3px;
+            word-break: break-all;
+            word-wrap: break-word;
+            overflow: auto;
+        }
+        .markdown pre code {
+            display: block;
+        }
+        .markdown pre > code {
+            border: 0;
+            white-space: pre;
+            padding: .5em;
+            margin: 0;
+        }
+        .markdown code {
+            border: 1px solid #cccccc;
+            border-radius: 3px;
+            word-break: break-all;
+            word-wrap: break-word;
+            white-space: nowrap;
+            padding: 0 5px;
+            margin: 0 2px;
+        }
+        .markdown img {
+            max-width: 100%;
+        }
+        .markdown table {
+            padding: 0;
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+        .markdown table tr th,
+        .markdown table tr td {
+            border: 1px solid #cccccc;
+            margin: 0;
+            padding: 6px 13px;
+        }
+        .markdown table tr th {
+            font-weight: bold;
+        }
+        .markdown table tr th > :first-child {
+            margin-top: 0;
+        }
+        .markdown table tr th > :last-child {
+            margin-bottom: 0;
+        }
+        .markdown table tr td > :first-child {
+            margin-top: 0;
+        }
+        .markdown table tr td > :last-child {
+            margin-bottom: 0;
+        }
+        @import url(http://fonts.googleapis.com/css?family=Tauri);
+
+        @import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:300italic,400italic,700italic,400,300,700);
+        /*---------------------------------------------------
+            LESS Elements 0.9
+          ---------------------------------------------------
+            A set of useful LESS mixins
+            More info at: http://lesselements.com
+          ---------------------------------------------------*/
+        /**
+         * https://github.com/rhiokim/markdown-css
+         * solarized-light style
+         * made by rhio.kim
+         * powered by http://ethanschoonover.com/solarized
+         */
+        .haroopad {
+            padding: 20px;
+            color: #222222;
+            font-size: 0.9em;
+            font-family: 'Roboto Condensed', 'Tauri', "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", AppleSDGothicNeo-Medium, Verdana, Tahoma, sans-serif;
+            background: #ffffff;
+            -webkit-font-smoothing: antialiased;
+        }
+        .haroopad a {
+            color: #3269a0;
+        }
+        .haroopad a:hover {
+            color: #4183c4;
+        }
+        .haroopad h2 {
+            border-bottom: 1px solid #e6e6e6;
+        }
+        .haroopad h6 {
+            color: #777;
+        }
+        .haroopad hr {
+            border: 1px solid #e6e6e6;
+        }
+        .haroopad pre > code {
+            font-size: 1.1em;
+            font-family: Consolas, Inconsolata, Courier, monospace;
+            letter-spacing: -1px;
+            font-weight: bold;
+        }
+        .haroopad blockquote {
+            border-left: 4px solid #e6e6e6;
+            padding: 0 15px;
+            font-style: italic;
+        }
+        .haroopad table {
+            background-color: #fafafa;
+        }
+        .haroopad table tr th,
+        .haroopad table tr td {
+            border: 1px solid #e6e6e6;
+        }
+        .haroopad table tr:nth-child(2n) {
+            background-color: #f2f2f2;
+        }
+        /**
+         * after less
+         */
+        /*
+        .haroopad {
+
+          img {
+            .bordered(@border-color, @border-color, @border-color, @border-color);
+            .rounded(3px);
+            .box-shadow(0 0 7px darken(@border-color, 18%));
+
+            &:hover {
+                -webkit-animation-duration: 1s;
+                -webkit-animation-delay: .2s;
+                .pulse;
+            }
+          }
+
+          h1 {
+            -webkit-animation-duration: .5s;
+            -webkit-animation-delay: .2s;
+              .tada;
+          }
+
+          &>ul {
+              &>li {
+                -webkit-animation-duration: .5s;
+                -webkit-animation-delay: .2s;
+                  .fadeInLeft;
+              }
+          }
+
+        }
+        *//*
+
+        Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmail.com>
+
+        */
+
+        pre code {
+            display: block; padding: 0.5em;
+            background: #fdf6e3; color: #657b83;
+        }
+
+        pre .comment,
+        pre .template_comment,
+        pre .diff .header,
+        pre .doctype,
+        pre .pi,
+        pre .lisp .string,
+        pre .javadoc {
+            color: #93a1a1;
+            font-style: italic;
+        }
+
+        pre .keyword,
+        pre .winutils,
+        pre .method,
+        pre .addition,
+        pre .css .tag,
+        pre .request,
+        pre .status,
+        pre .nginx .title {
+            color: #859900;
+        }
+
+        pre .number,
+        pre .command,
+        pre .string,
+        pre .tag .value,
+        pre .phpdoc,
+        pre .tex .formula,
+        pre .regexp,
+        pre .hexcolor {
+            color: #2aa198;
+        }
+
+        pre .title,
+        pre .localvars,
+        pre .chunk,
+        pre .decorator,
+        pre .built_in,
+        pre .identifier,
+        pre .vhdl .literal,
+        pre .id {
+            color: #268bd2;
+        }
+
+        pre .attribute,
+        pre .variable,
+        pre .lisp .body,
+        pre .smalltalk .number,
+        pre .constant,
+        pre .class .title,
+        pre .parent,
+        pre .haskell .type {
+            color: #b58900;
+        }
+
+        pre .preprocessor,
+        pre .preprocessor .keyword,
+        pre .shebang,
+        pre .symbol,
+        pre .symbol .string,
+        pre .diff .change,
+        pre .special,
+        pre .attr_selector,
+        pre .important,
+        pre .subst,
+        pre .cdata,
+        pre .clojure .title {
+            color: #cb4b16;
+        }
+
+        pre .deletion {
+            color: #dc322f;
+        }
+
+        pre .tex .formula {
+            background: #eee8d5;
+        }
+
+    </style>
+</head>
+<body class="markdown haroopad"><h2>개인 정보</h2>
+<h6>기본정보</h6>
+<table>
+    <thead>
+    <tr>
+        <th>Category</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>Name</td>
+        <td>신자현</td>
+    </tr>
+    <tr>
+        <td> - Chinese</td>
+        <td>辛慈鉉</td>
+    </tr>
+    <tr>
+        <td> - English</td>
+        <td>Jahyun Shin</td>
+    </tr>
+    <tr>
+        <td>Age</td>
+        <td>40</td>
+    </tr>
+    <tr>
+        <td>Birth</td>
+        <td>1983</td>
+    </tr>
+    <tr>
+        <td>Email</td>
+        <td>jahyunshin@gmail.com</td>
+    </tr>
+    <tr>
+        <td>Address</td>
+        <td>서울 마포구 서교동</td>
+    </tr>
+    </tbody>
+</table>
+
+<h6>학력정보</h6>
+<table>
+    <thead>
+    <tr>
+        <th>Level</th>
+        <th>School Name</th>
+        <th>Major</th>
+        <th>End</th>
+        <th>Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>대학원</td>
+        <td>단국대학교 정보통신대학원</td>
+        <td>IT학과</td>
+        <td>2012.02</td>
+        <td>graduated</td>
+    </tr>
+    </tbody>
+</table>
+
+<h6>자격증</h6>
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Certificate Issuer</th>
+        <th>Certifications</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>ITIL Foundation</td>
+        <td>EXIN</td>
+        <td>2010.08</td>
+    </tr>
+    <tr>
+        <td>SCJP</td>
+        <td>SUN</td>
+        <td>2008.04</td>
+    </tr>
+    <tr>
+        <td>정보통신산업기사</td>
+        <td>산업인력관리공단</td>
+        <td>2007.04</td>
+    </tr>
+    <tr>
+        <td>유통관리사 2급</td>
+        <td>상공회의소</td>
+        <td>2006.04</td>
+    </tr>
+    <tr>
+        <td>정보처리기사</td>
+        <td>산업인력관리공단</td>
+        <td>2006.08</td>
+    </tr>
+    </tbody>
+</table>
+
+<h3>직장이력</h3>
+<table>
+    <thead>
+    <tr>
+        <th>Period</th>
+        <th>Company</th>
+        <th>Business</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>2019.05 - 2022.02</td>
+        <td>이썸테크</td>
+        <td>KOSCOM.KOSMOS &gt; KOSMOS.NEO 차세대 개발</td>
+    </tr>
+    <tr>
+        <td>2018.06 - 2019.04</td>
+        <td>크림솔루션</td>
+        <td>헬스 커넥트 코치코치 서비스 고도화, SKT T 사내 포털 서비스 개발</td>
+    </tr>
+    <tr>
+        <td>2017.05 - 2018.05</td>
+        <td>펜타시스템테크놀러지</td>
+        <td>대신증권 문서관리 중앙화 시스템 운영</td>
+    </tr>
+    <tr>
+        <td>2015.12 - 2017.02</td>
+        <td>가디언시스템</td>
+        <td>사회보장정보원 행복이음시스템 사후관리 운영</td>
+    </tr>
+    <tr>
+        <td>2015.07 - 2015.11</td>
+        <td>바이웹</td>
+        <td>SC은행 Mobile Platform 운영</td>
+    </tr>
+    <tr>
+        <td>2015.05 - 2015.07</td>
+        <td>안정ADS</td>
+        <td>대검찰청 양형, 판결문 검색 개발</td>
+    </tr>
+    <tr>
+        <td>2013.09 - 2014.12</td>
+        <td>솔인시스템</td>
+        <td>AXA다이렉트 보상 시스템 운영</td>
+    </tr>
+    <tr>
+        <td>2012.03 - 2013.03</td>
+        <td>바이웹</td>
+        <td>금융감독원 디비암호화 사업</td>
+    </tr>
+    <tr>
+        <td>2010.06 - 2012.02</td>
+        <td>하나은행</td>
+        <td>행 내 금융플라자(금융 상품 판매) 사이트 운영</td>
+    </tr>
+    <tr>
+        <td>2008.08 - 2010.05</td>
+        <td>나온소프트</td>
+        <td>EP(Enterprise Portal) 구축 및 운영</td>
+    </tr>
+    <tr>
+        <td>2002.03 - 2003.03</td>
+        <td>중앙정보처리학원</td>
+        <td>자격증 및 프로그래밍 강의</td>
+    </tr>
+    </tbody>
+</table>
+
+<h2>최근 프로젝트 이력</h2>
+<h4>이썸테크</h4>
+<ul>
+    <li>프로젝트<ul>
+        <li>소개  <blockquote>
+            <p>외국계 증권사 특화업무를 지원하는 딜링(Dealing) 솔루션 KOSMOS의 차세대(KOSMOS NEO) 개발</p>
+        </blockquote>
+        </li>
+        <li>역할  <blockquote>
+            <ul>
+                <li>해외 주문 체결 (KCI), 해외 주문 체결 Broker(KSSS), 회계연동 (Cash Function), 금융감독원 보고 시스템 (FSS) 메인 개발</li>
+            </ul>
+        </blockquote>
+        </li>
+        <li>사용기술  <blockquote>
+            <ul>
+                <li>Spring Framework, Spring boot, Sybase, jQuery 등</li>
+            </ul>
+        </blockquote>
+        </li>
+        <li>개발기간: 34개월</li>
+        <li>사업 정보: <a href="https://www.koscom.co.kr/portal/bbs/B0000037/view.do?nttId=732&menuNo=200433" target="_blank">KOSMOS (2003~)</a>  </li>
+    </ul>
+    </li>
+</ul>
+
+<h2>Reference</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Site</th>
+        <th>URL</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>Github</td>
+        <td><a href="https://github.com/jahyunshin" target="_blank">github.com/jahyunshin</a></td>
+    </tr>
+    </tbody>
+</table>
+<h2><br><br></h2>
+<p>위의 사실은 GNU 정신에 의거하여 사실임을 증명하며, 만약 사실이 아닐 경우 MIT 라이센스로 공개해도 무방합니다.</p>
+<p>2022년 3월 14일
+    {신자현}</p>
+</body>
+</html>
